@@ -17,12 +17,13 @@ app.url_map.strict_slashes = False
 babel = Babel(app)
 
 
-#@babel.localeselector
+@babel.localeselector
 def get_locale() -> str:
     """Retrieves the locale for a web page"""
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
-babel.init_app(app, locale_selector=get_locale)
+# babel.init_app(app, locale_selector=get_locale)
+
 
 @app.route('/')
 def get_index() -> str:
